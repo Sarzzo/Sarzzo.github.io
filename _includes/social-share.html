@@ -1,0 +1,16 @@
+{% include base_path %}
+{% capture share_url %}{{ base_path }}{{ page.url }}{% endcapture %}
+{% assign share_url_esc = share_url | url_encode %}
+{% capture share_title %}{% if page.title %}{{ page.title | strip_html }} - {% endif %}{{ site.title }}{% endcapture %}
+{% assign share_title_esc = share_title | url_encode %}
+
+<div class="ag-share">
+  <span class="ag-share__label">Share</span>
+  <ul class="ag-share__links">
+    <li><a href="https://twitter.com/intent/tweet?url={{ share_url_esc }}&amp;text={{ share_title_esc }}" title="Share on Twitter" aria-label="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ share_url_esc }}&amp;title={{ share_title_esc }}" title="Share on LinkedIn" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url_esc }}" title="Share on Facebook" aria-label="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+    <li><a href="https://wa.me/?text={{ share_title_esc }}%20{{ share_url_esc }}" title="Share on WhatsApp" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+    <li><a href="mailto:?subject={{ share_title_esc }}&amp;body={{ share_url_esc }}" title="Share by email" aria-label="Share by email"><i class="fas fa-envelope" aria-hidden="true"></i></a></li>
+  </ul>
+</div>

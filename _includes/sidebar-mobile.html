@@ -1,0 +1,14 @@
+{% if page.author and site.data.authors[page.author] %}{% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}{% endif %}
+<div class="ag-contact-mobile">
+  {% include author-avatar.html %}
+  <div class="ag-contact-mobile__name">{{ author.name }}</div>
+  {% if author.bio %}<div class="ag-contact-mobile__bio">{{ author.bio }}</div>{% endif %}
+  <button class="ag-btn ag-contact-mobile__button" type="button" aria-haspopup="dialog" aria-controls="ag-contact-modal">Contact</button>
+  <div id="ag-contact-modal" class="ag-modal" role="dialog" aria-modal="true" aria-label="Contact" hidden>
+    <div class="ag-modal__overlay" data-modal-close></div>
+    <div class="ag-modal__box">
+      <button class="ag-modal__close" type="button" aria-label="Close" data-modal-close>&times;</button>
+      {% include author-profile.html %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<script src="{{ base_path }}/assets/js/main.min.js"></script>
+
+<script>
+  (function () {
+    // Mobile navigation menu
+    var nav = document.querySelector('.ag-nav');
+    var toggle = nav && nav.querySelector('.ag-nav__toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Mobile contact dialog
+    var modal = document.getElementById('ag-contact-modal');
+    var opener = document.querySelector('.ag-contact-mobile__button');
+    if (modal && opener) {
+      var close = function () { modal.hidden = true; opener.focus(); };
+      opener.addEventListener('click', function () {
+        modal.hidden = false;
+        var btn = modal.querySelector('.ag-modal__close');
+        if (btn) { btn.focus(); }
+      });
+      Array.prototype.forEach.call(modal.querySelectorAll('[data-modal-close]'), function (el) {
+        el.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hidden) { close(); }
+      });
+    }
+  })();
+</script>
+
+{% include analytics.html %}
+{% include /comments-providers/scripts.html %}
