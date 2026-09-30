@@ -1,25 +1,7 @@
-# Sara Ibrahim — academic website
+# Sara Ibrahim
 
-Personal academic website built with Jekyll and hosted on GitHub Pages.
+Source code of my academic website: **https://sarzzo.github.io**
 
-## Editing the site
+I am a PhD student in biostatistics at the Institut Desbrest d'Épidémiologie et de Santé Publique (IDESP), University of Montpellier, working on the statistical modelling of suicidal behaviour with French national health data.
 
-| What | Where |
-| --- | --- |
-| Name, job title, affiliation, email, ORCID and other links | `_config.yml` (the `author:` section) |
-| Home page text | `_pages/about.md` |
-| CV page | `_pages/cv.md` |
-| Publications (one file each) | `_publications/` |
-| Talks and posters (one file each) | `_talks/` |
-| Teaching (one file each) | `_teaching/` |
-| Menu | `_data/navigation.yml` |
-| Profile photo | put it in `images/` and set `avatar:` in `_config.yml` |
-| Banner image | put it in `images/` and set `banner:` in `_config.yml` |
-
-To add a publication, copy an existing file in `_publications/` and edit it.
-In the `authors:` line, write your name as `S. Ibrahim` so that it is shown in bold.
-
-Talks and teaching entries accept an optional `display_date:` (for example
-`"January 2026"`) that is shown instead of the exact `date:`.
-
-Every change committed to the main branch is published automatically within a minute or two.
+The site is built with [Jekyll](https://jekyllrb.com/) and hosted on GitHub Pages. It is based on the [academicpages](https://github.com/academicpages/academicpages.github.io) template, a fork of [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes), released under the MIT License (see `LICENSE`).

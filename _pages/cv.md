@@ -55,7 +55,7 @@ Talks and posters
 
 Outreach and public engagement
 ======
-* **Scientific activities** at the PLOUF day (a fun programme for young explorers) and at World Water Day, UNESCO ICEREWARD International Centre, Kiazma, Montpellier, April 2026
+* **Scientific activities** at the PLOUF day (a fun programme for young explorers) and at World Water Day, UNESCO ICIREWARD International Centre, Kiazma, Montpellier, April 2026
 * **Science workshops on water**, its states and the water cycle, for first-grade (CP) primary school classes, with the Fondation La Main à la Pâte (32 h), Léopold Sédar Senghor and Simon Bolivar elementary schools, Montpellier, March – April 2026
 
 Funding
