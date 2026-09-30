@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<article class="ag-article" itemscope itemtype="http://schema.org/CreativeWork">
+  {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+  {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
+
+  {% include page-title.html %}
+
+  <div class="ag-meta">
+    {% if page.type or page.talk_type %}<p class="ag-meta__kicker">{{ page.talk_type | default: page.type }}</p>{% endif %}
+    {% if page.venue %}<p>{{ page.venue }}{% if page.location %}, {{ page.location }}{% endif %}</p>{% endif %}
+    {% assign talk_date = page.modified | default: page.date %}
+    {% if page.display_date %}<p class="ag-meta__muted">{{ page.display_date }}</p>{% elsif talk_date %}<p class="ag-meta__muted"><time datetime="{{ talk_date | date_to_xmlschema }}">{{ talk_date | date: "%B %d, %Y" }}</time></p>{% endif %}
+    {% if page.slidesurl %}
+      <div class="ag-btn-row"><a class="ag-btn" href="{{ page.slidesurl }}" target="_blank" rel="noopener noreferrer">Slides</a></div>
+    {% endif %}
+  </div>
+
+  <div class="ag-content" itemprop="text">
+    {{ content }}
+    {% if page.link %}<p><a href="{{ page.link }}" class="ag-btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></p>{% endif %}
+  </div>
+
+  {% include page__taxonomy.html %}
+
+  {% if page.previous or page.next %}<div class="ag-pager">{% include post_pagination.html %}</div>{% endif %}
+
+  {% unless page.share == false %}{% include social-share.html %}{% endunless %}
+</article>

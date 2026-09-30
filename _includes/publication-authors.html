@@ -1,0 +1,9 @@
+{% comment %}Renders an author list, highlighting the site author's name (site.author.citation_name).{% endcomment %}
+{% assign authors = include.authors %}
+{% if authors %}
+  {% if site.author.citation_name %}
+    {% capture highlighted %}<b>{{ site.author.citation_name }}</b>{% endcapture %}
+    {% assign authors = authors | replace: site.author.citation_name, highlighted %}
+  {% endif %}
+  {{ authors }}
+{% endif %}

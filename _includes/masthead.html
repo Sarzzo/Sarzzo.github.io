@@ -1,0 +1,30 @@
+{% include base_path %}
+
+<header class="ag-header">
+  <div class="ag-header__inner">
+    <h1 class="ag-header__title"><a href="{{ base_path }}/">{{ site.title }}</a></h1>
+    <nav class="ag-nav" aria-label="Main navigation">
+      <button class="ag-nav__toggle" type="button" aria-expanded="false" aria-controls="ag-nav-links" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+      <ul id="ag-nav-links" class="ag-nav__links">
+        {% for link in site.data.navigation.main %}
+          {% if link.url contains 'http' %}
+            {% assign domain = '' %}
+          {% else %}
+            {% assign domain = base_path %}
+          {% endif %}
+          {% if link.url == '/' %}
+            {% assign is_active = false %}{% if page.url == '/' %}{% assign is_active = true %}{% endif %}
+          {% else %}
+            {% assign url_prefix = page.url | slice: 0, link.url.size %}
+            {% assign is_active = false %}
+            {% if url_prefix == link.url %}{% assign is_active = true %}{% endif %}
+            {% if page.collection and link.url contains page.collection %}{% assign is_active = true %}{% endif %}
+          {% endif %}
+          <li class="ag-nav__item{% if is_active %} is-active{% endif %}"><a href="{{ domain }}{{ link.url }}"{% if is_active %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

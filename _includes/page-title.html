@@ -1,0 +1,7 @@
+{% assign heading = include.title | default: page.title %}
+{% if heading %}
+<header class="ag-page-title">
+  <h1 itemprop="headline">{{ heading | markdownify | remove: "<p>" | remove: "</p>" | strip }}</h1>
+  {% if page.subtitle %}<p class="ag-lead">{{ page.subtitle | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>{% endif %}
+</header>
+{% endif %}

@@ -1,0 +1,37 @@
+{% include base_path %}
+
+{% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+  {% assign teaser = nil %}
+{% endif %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" | strip %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<article class="ag-item{% if teaser %} ag-item--has-image{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
+  {% if teaser %}
+    <div class="ag-item__image">
+      <img src="{% if teaser contains "://" %}{{ teaser }}{% else %}{{ teaser | prepend: "/images/" | prepend: base_path }}{% endif %}" alt="" loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="ag-item__body">
+    <p class="ag-item__title" itemprop="headline">
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ title }}</a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+      {% endif %}
+    </p>
+    {% if post.venue %}<p class="ag-item__authors">{% if post.type %}{{ post.type }} &middot; {% endif %}{{ post.venue }}{% if post.location %}, {{ post.location }}{% endif %}</p>{% endif %}
+    {% if post.display_date %}<p class="ag-item__muted">{{ post.display_date }}</p>{% elsif post.date %}<p class="ag-item__muted"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></p>{% endif %}
+    <div class="ag-btn-row">
+      {% if post.slidesurl %}<a class="ag-btn" href="{{ post.slidesurl }}" target="_blank" rel="noopener noreferrer">Slides</a>{% endif %}
+      <a class="ag-btn" href="{{ base_path }}{{ post.url }}">Details</a>
+    </div>
+  </div>
+</article>

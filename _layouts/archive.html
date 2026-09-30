@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<div class="ag-article">
+  {% include page-title.html %}
+
+  <div class="ag-content">
+    {{ content }}
+  </div>
+
+  {% unless page.share == false %}{% include social-share.html %}{% endunless %}
+</div>

@@ -1,0 +1,12 @@
+{% include base_path %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" | strip %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<li class="ag-cv-item" itemscope itemtype="http://schema.org/CreativeWork">
+  <a class="ag-cv-item__title" href="{% if post.link %}{{ post.link }}{% else %}{{ base_path }}{{ post.url }}{% endif %}" itemprop="headline">{{ title }}</a>
+  <div class="ag-cv-item__muted">{% if post.type %}{{ post.type }}, {% endif %}{{ post.venue }}{% if post.location %}, {{ post.location }}{% endif %}{% if post.display_date %}, {{ post.display_date }}{% elsif post.date %}, {{ post.date | date: "%B %Y" }}{% endif %}</div>
+</li>

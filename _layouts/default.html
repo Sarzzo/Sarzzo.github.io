@@ -1,0 +1,46 @@
+---
+layout: compress
+---
+
+{% include base_path %}
+
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+
+  <body>
+
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
+
+    {% assign banner = page.banner | default: site.banner %}
+    {% if banner %}
+      {% if banner contains "://" %}{% assign banner_url = banner %}{% else %}{% assign banner_url = banner | prepend: "/images/" | prepend: base_path %}{% endif %}
+      <div class="ag-banner" style="background-image: url('{{ banner_url }}');" role="presentation"></div>
+    {% endif %}
+
+    <main id="content" class="ag-main{% if banner %} ag-main--has-banner{% endif %}" role="main">
+      <div class="ag-container">
+        <div class="ag-row">
+          <div class="ag-col-sidebar">
+            {% include sidebar.html %}
+          </div>
+          <div class="ag-col-content">
+            {% include sidebar-mobile.html %}
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="ag-footer">
+      {% include footer.html %}
+    </footer>
+
+    {% include scripts.html %}
+
+  </body>
+</html>

@@ -1,0 +1,71 @@
+{% include base_path %}
+
+{% if page.author and site.data.authors[page.author] %}
+  {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
+{% endif %}
+
+<div class="ag-profile" itemscope itemtype="http://schema.org/Person">
+  <div class="ag-profile__name" itemprop="name">{{ author.name }}</div>
+  {% if author.bio %}<div class="ag-profile__bio" itemprop="jobTitle">{{ author.bio }}</div>{% endif %}
+
+  {% if author.employer or author.location %}
+    <div class="ag-profile__affiliation">
+      {% if author.employer %}<p itemprop="affiliation">{{ author.employer }}</p>{% endif %}
+      {% if author.location %}<p itemprop="homeLocation">{{ author.location }}</p>{% endif %}
+    </div>
+  {% endif %}
+
+  <ul class="ag-social">
+    {% if author.email %}
+      <li><span class="ag-social__icon"><i class="fas fa-envelope" aria-hidden="true"></i></span><a href="mailto:{{ author.email }}">{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
+    {% endif %}
+    {% if author.uri %}
+      <li><span class="ag-social__icon"><i class="fas fa-link" aria-hidden="true"></i></span><a href="{{ author.uri }}">{{ site.data.ui-text[site.locale].website_label | default: "Website" }}</a></li>
+    {% endif %}
+    {% if author.googlescholar %}
+      <li><span class="ag-social__icon"><i class="ai ai-google-scholar" aria-hidden="true"></i></span><a href="{{ author.googlescholar }}">Google Scholar</a></li>
+    {% endif %}
+    {% if author.researchgate %}
+      <li><span class="ag-social__icon"><i class="fab fa-researchgate" aria-hidden="true"></i></span><a href="{{ author.researchgate }}">ResearchGate</a></li>
+    {% endif %}
+    {% if author.orcid %}
+      <li><span class="ag-social__icon"><i class="ai ai-orcid" aria-hidden="true"></i></span><a href="{{ author.orcid }}">ORCID</a></li>
+    {% endif %}
+    {% if author.pubmed %}
+      <li><span class="ag-social__icon"><i class="ai ai-pubmed" aria-hidden="true"></i></span><a href="{{ author.pubmed }}">PubMed</a></li>
+    {% endif %}
+    {% if author.impactstory %}
+      <li><span class="ag-social__icon"><i class="ai ai-impactstory" aria-hidden="true"></i></span><a href="{{ author.impactstory }}">Impactstory</a></li>
+    {% endif %}
+    {% if author.github %}
+      <li><span class="ag-social__icon"><i class="fab fa-github" aria-hidden="true"></i></span><a href="https://github.com/{{ author.github }}">GitHub</a></li>
+    {% endif %}
+    {% if author.linkedin %}
+      <li><span class="ag-social__icon"><i class="fab fa-linkedin-in" aria-hidden="true"></i></span><a href="https://www.linkedin.com/in/{{ author.linkedin }}">LinkedIn</a></li>
+    {% endif %}
+    {% if author.twitter %}
+      <li><span class="ag-social__icon"><i class="fab fa-twitter" aria-hidden="true"></i></span><a href="https://twitter.com/{{ author.twitter }}">Twitter</a></li>
+    {% endif %}
+    {% if author.facebook %}
+      <li><span class="ag-social__icon"><i class="fab fa-facebook" aria-hidden="true"></i></span><a href="https://www.facebook.com/{{ author.facebook }}">Facebook</a></li>
+    {% endif %}
+    {% if author.instagram %}
+      <li><span class="ag-social__icon"><i class="fab fa-instagram" aria-hidden="true"></i></span><a href="https://instagram.com/{{ author.instagram }}">Instagram</a></li>
+    {% endif %}
+    {% if author.youtube %}
+      <li><span class="ag-social__icon"><i class="fab fa-youtube" aria-hidden="true"></i></span><a href="https://www.youtube.com/user/{{ author.youtube }}">YouTube</a></li>
+    {% endif %}
+    {% if author.stackoverflow %}
+      <li><span class="ag-social__icon"><i class="fab fa-stack-overflow" aria-hidden="true"></i></span><a href="https://www.stackoverflow.com/users/{{ author.stackoverflow }}">Stack Overflow</a></li>
+    {% endif %}
+    {% if author.keybase %}
+      <li><span class="ag-social__icon"><i class="fas fa-key" aria-hidden="true"></i></span><a href="https://keybase.io/{{ author.keybase }}">Keybase</a></li>
+    {% endif %}
+    {% if author.bitbucket %}
+      <li><span class="ag-social__icon"><i class="fab fa-bitbucket" aria-hidden="true"></i></span><a href="https://bitbucket.org/{{ author.bitbucket }}">Bitbucket</a></li>
+    {% endif %}
+    {% if author.wikipedia %}
+      <li><span class="ag-social__icon"><i class="fab fa-wikipedia-w" aria-hidden="true"></i></span><a href="https://en.wikipedia.org/wiki/User:{{ author.wikipedia }}">Wikipedia</a></li>
+    {% endif %}
+  </ul>
+</div>
